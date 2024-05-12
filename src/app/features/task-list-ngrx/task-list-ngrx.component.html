@@ -1,0 +1,46 @@
+<h2>{{ title }}</h2>
+
+<!-- substituto da diretiva ngFor no angular 17, achei tão prátio que resolvi testar -->
+<section>
+@for ( nota of notes$ | async; track $index){
+  <h3>{{ nota.title }} - {{ nota.date }}</h3>  
+  <p>{{ nota.content }}</p>
+  }
+</section>
+
+<section>{{ form.value | json }}</section>
+  <div class="input-group">
+    
+    <form [formGroup]="form">
+
+    <!-- <label class="input-group__label" for="myInputTit">Titulo</label>
+    <input type="text" id="myInputTit" formControlName="title" class="input-group__input" />
+    <p *ngIf="form?.controls?.title?.invalid">Campo obrigatório</p>
+
+    <label class="input-group__label" for="myInputDate">Data</label>
+    <input type="text" id="myInputDate" formControlName="date"  class="input-group__input" />
+    <p *ngIf="form?.controls?.date?.invalid">Campo obrigatório</p>
+
+    <label class="input-group__label" for="myInputContent">Descrição</label>
+    <input type="text" id="myInputContent" formControlName="content"  class="input-group__input" />
+    <p *ngIf="form?.controls?.content?.invalid">Campo obrigatório</p> -->
+
+
+    <label >Titulo</label>
+    <input type="text" id="myInputTit" formControlName="title"  />
+    <p *ngIf="form.controls.title.invalid">Campo titulo obrigatório</p>
+
+    <label >Data</label>
+    <input type="text" id="myInputDate" formControlName="date"  />
+    <p *ngIf="form.controls.date.invalid">Campo data  obrigatório</p>
+
+    <label>Descrição</label>
+    <input type="text" id="myInputContent" formControlName="content" />
+    <p *ngIf="form.controls.content.invalid">Campo Descrição é obrigatório</p>
+
+    <button (click)="addNota()">Add Note</button>
+
+    </form>
+    
+  </div>
+
